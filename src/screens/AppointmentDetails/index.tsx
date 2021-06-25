@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList, ImageBackground, Text, View } from 'react-native'
 import { Fontisto } from '@expo/vector-icons'
 import { BorderlessButton } from 'react-native-gesture-handler'
+import { useRoute } from '@react-navigation/native'
 
 import { Background } from '../../components/Background'
 import { Header } from '../../components/Header'
@@ -12,8 +13,17 @@ import { ListHeader } from '../../components/ListHeader'
 import { Member } from '../../components/Member'
 import { ListDivider } from '../../components/ListDivider'
 import { ButtonIcon } from '../../components/ButtonIcon'
+import { AppointmentProps } from '../../components/Appointments'
+
+type Params = {
+    guildSelected: AppointmentProps
+}
 
 export function AppointmentDetails(){
+    const routes = useRoute()
+    const { guildSelected } = routes.params as Params
+
+
     const members = [
         {
             id: '1',
@@ -49,11 +59,11 @@ export function AppointmentDetails(){
             >
                 <View style={styles.bannerContent}>
                     <Text style={styles.title}>
-                        Lendários
+                        {guildSelected.guild.name}
                     </Text>
 
                     <Text style={styles.subtitle}>
-                        É hoje que vamos chegar ao challenger sem perder uma partida da md10
+                        {guildSelected.description}
                     </Text>
                 </View>
             </ImageBackground>
@@ -69,7 +79,7 @@ export function AppointmentDetails(){
                 renderItem={({item}) =>(
                     <Member data={item}/>
                 )}
-                ItemSeparatorComponent={() => <ListDivider />}
+                ItemSeparatorComponent={() => <ListDivider isCentered/>}
                 style={styles.members}
             />
 
