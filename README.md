@@ -58,7 +58,7 @@ O NLW é um evento online com muito conteúdo prático, em que o conteúdo fica 
 </p>
 
 
-## 🛠 Tecnologias
+## 🖥 Tecnologias
 
 Ferramentas usadas na construção do projeto:
 
