@@ -65,7 +65,7 @@ export function Home() {
       
         console.log('Done.')
       }
-      clearAll()
+    //   clearAll()
 
    // console.log(appointments)
     return(
