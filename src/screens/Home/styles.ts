@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { theme } from '../../global/styles/theme'
 
 export const styles = StyleSheet.create({
     container:{
@@ -16,5 +17,12 @@ export const styles = StyleSheet.create({
     matches:{
         marginTop: 24,
         marginLeft: 24
+    },
+    emptyList:{
+        marginTop: 60,
+        textAlign:'center',
+        fontSize: 18,
+        fontFamily: theme.fonts.text500,
+        color: theme.colors.highlight
     }
 })

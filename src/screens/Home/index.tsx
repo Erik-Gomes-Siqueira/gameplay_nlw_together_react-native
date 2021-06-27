@@ -56,6 +56,18 @@ export function Home() {
         loadAppointments()
     }, [category]))
 
+    const clearAll = async () => {
+        try {
+          await AsyncStorage.clear()
+        } catch(e) {
+          // clear error
+        }
+      
+        console.log('Done.')
+      }
+      clearAll()
+
+   // console.log(appointments)
     return(
         <Background>
             <View style={styles.header}>
@@ -77,21 +89,26 @@ export function Home() {
                             title='Partidas agendadas' 
                             subtitle={`Total: ${appointments.length}`}
                         />
-                        
-                        <FlatList 
-                            data={appointments}
-                            keyExtractor={item => item.id}
-                            renderItem={({item}) => (
-                                <Appointments 
-                                    data={item}
-                                    onPress={() => handleAppointmentDetails(item)}
+                        {
+                            appointments.length === 0
+                            ? 
+                                <Text style={styles.emptyList}>Você não possui partidas marcadas</Text>
+                            :
+                                <FlatList 
+                                    data={appointments}
+                                    keyExtractor={item => item.id}
+                                    renderItem={({item}) => (
+                                        <Appointments 
+                                            data={item}
+                                            onPress={() => handleAppointmentDetails(item)}
+                                        />
+                                    )}
+                                    ItemSeparatorComponent={() => <ListDivider /> }
+                                    contentContainerStyle={{ paddingBottom: 69 }}
+                                    style={styles.matches}
+                                    showsHorizontalScrollIndicator={false}
                                 />
-                            )}
-                            ItemSeparatorComponent={() => <ListDivider /> }
-                            contentContainerStyle={{ paddingBottom: 69 }}
-                            style={styles.matches}
-                            showsHorizontalScrollIndicator={false}
-                        />
+                        }
                     </>
             }
             

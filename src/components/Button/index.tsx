@@ -5,12 +5,13 @@ import { styles } from './styles'
 
 type Props = RectButtonProps & {
     title: string;
+    color?: string
 }
 
-export function Button({title, ...rest}: Props){
+export function Button({title, color, ...rest}: Props){
     return(
         <RectButton
-            style={styles.container}
+            style={color? [styles.container, {backgroundColor: color}] :styles.container}
             {...rest}
         >
 

@@ -14,8 +14,11 @@ export const styles = StyleSheet.create({
     bannerContent:{
         flex: 1,
         justifyContent: 'flex-end',
+        backgroundColor: theme.colors.overlay,
+        height: '100%',
         paddingHorizontal: 24,
-        marginBottom: 30
+        paddingBottom: 30
+        
     },
     title:{
         fontSize: 28,
@@ -35,6 +38,8 @@ export const styles = StyleSheet.create({
     footer:{
         paddingHorizontal: 24,
         paddingVertical: 20,
-        marginBottom: getBottomSpace()
+        marginBottom: getBottomSpace(),
+        flexDirection:'row',
+        justifyContent:'center'
     }
 })
